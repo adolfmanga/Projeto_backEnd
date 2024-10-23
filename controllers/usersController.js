@@ -1,6 +1,6 @@
 const db = require('../config/db'); // Importa a conexão com o banco de dados
 
-// Função para obter todas as transações
+// Função para obter todos os usuarios
 const getAllUsers = (req, res) => {
  db.query('SELECT * FROM users', (err, results) => {
  if (err) {
@@ -44,7 +44,7 @@ const updateUsersPut = (req, res) => {
     res.status(500).send('Erro ao atualizar usuario');
     return;
     }
-    res.send('usuario atualizada com sucesso');
+    res.send('usuario atualizado com sucesso');
     }
     );
    };
@@ -88,29 +88,6 @@ const deleteUsers = (req, res) => {
    }; 
    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
    module.exports = {
     getAllUsers,
     addUsers,

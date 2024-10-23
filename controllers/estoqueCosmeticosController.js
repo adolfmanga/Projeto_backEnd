@@ -1,11 +1,11 @@
 const db = require('../config/db'); // Importa a conexão com o banco de dados
 
-// Função para obter todas as transações
+// Função para obter todos os produtos
 const getAllestoqueCosmeticos = (req, res) => {
  db.query('SELECT * FROM Almoxarife_Cosméticos', (err, results) => {
  if (err) {
- console.error('Erro ao obter usuarios:', err);
- res.status(500).send('Erro ao obter usuarios');
+ console.error('Erro ao obter os produtos:', err);
+ res.status(500).send('Erro ao obter produtos');
  return;
  }
  res.json(results);
@@ -22,16 +22,16 @@ const addestoqueCosmeticos = (req, res) => {
     (err, results) => {
         
     if (err) {
-    console.error('Erro ao adicionar usuario:', err);
-    res.status(500).send('Erro ao adicionar usuario');
+    console.error('Erro ao adicionar o produto:', err);
+    res.status(500).send('Erro ao adicionar o produto');
     return;
     }
-    res.status(201).send('usuario adicionado com sucesso');
+    res.status(201).send('produto adicionado com sucesso');
     }
     );
    };
 
-// Função para atualizar um usuario existente (substituição completa)
+// Função para atualizar um produto existente (substituição completa)
 const updateestoqueCosmeticosPut = (req, res) => {
     const { id } = req.params;
     const {nome, preco, descricao, estoque, validade } = req.body;
@@ -40,16 +40,16 @@ const updateestoqueCosmeticosPut = (req, res) => {
     [nome, preco, descricao, estoque, validade, id],
     (err, results) => {
     if (err) {
-    console.error('Erro ao atualizar o usuario:', err);
-    res.status(500).send('Erro ao atualizar usuario');
+    console.error('Erro ao atualizar o produto:', err);
+    res.status(500).send('Erro ao atualizar o produto');
     return;
     }
-    res.send('usuario atualizada com sucesso');
+    res.send('produto atualizado com sucesso');
     }
     );
    };
    
-// Função para atualizar um usuario existente (atualização parcial)
+// Função para atualizar um produto existente (atualização parcial)
 const updateestoqueCosmeticosPatch = (req, res) => {
     const { id } = req.params;
     const fields = req.body;
@@ -65,11 +65,11 @@ const updateestoqueCosmeticosPatch = (req, res) => {
     values,
     (err, results) => {
     if (err) {
-    console.error('Erro ao atualizar o usuario:', err);
-    res.status(500).send('Erro ao atualizar o usuario');
+    console.error('Erro ao atualizar o produto:', err);
+    res.status(500).send('Erro ao atualizar o produto');
     return;
     }
-    res.send('usuario atualizado com sucesso');
+    res.send('produto atualizado com sucesso');
     }
     );
    };
@@ -79,11 +79,11 @@ const deleteestoqueCosmeticos = (req, res) => {
     const { id } = req.params;
     db.query('DELETE FROM Almoxarife_Cosméticos WHERE id = ?', [id], (err, results) => {
     if (err) {
-    console.error('Erro ao deletar o usuario:', err);
-    res.status(500).send('Erro ao deletar o usuario');
+    console.error('Erro ao deletar o produto:', err);
+    res.status(500).send('Erro ao deletar o produto');
     return;
     }
-    res.send('usuario deletado com sucesso');
+    res.send('produto deletado com sucesso');
     });
    }; 
    
